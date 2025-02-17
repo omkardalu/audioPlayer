@@ -1,5 +1,10 @@
 import './App.css'
+import Albums from "./components/Albums.jsx";
 
-function App() {}
+function App() {
+  return (
+    <Albums />
+  )
+}
 
 export default App
