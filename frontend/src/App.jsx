@@ -1,9 +1,13 @@
 import './App.css'
 import Albums from "./components/Albums.jsx";
+import Authentication from "./components/Authentication.jsx";
 
 function App() {
   return (
-    <Albums />
+    <>
+      <Authentication />
+      <Albums />
+    </>
   )
 }
 
