@@ -4,7 +4,7 @@ const useSpotifyApi = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL
   const fetchSpotifyData = async (endpoint) => {
     setLoading(true);
     setError(null);
@@ -13,7 +13,7 @@ const useSpotifyApi = () => {
     console.log(cleanEndpoint);
     
     try {
-      const response = await fetch(`http://localhost:8000/spotify/${cleanEndpoint}`, {
+      const response = await fetch(`${backendUrl}/spotify/${cleanEndpoint}`, {
         method: "GET",
         credentials: "include",
       });

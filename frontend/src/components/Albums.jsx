@@ -12,7 +12,7 @@ const Albums = () => {
 
   console.log(data);
   if (loading) return "Loading..."
-  if (error) return error.message
+  if (error) return <p>{error}</p>
   return (
     <div>
       <h1>Albums</h1>

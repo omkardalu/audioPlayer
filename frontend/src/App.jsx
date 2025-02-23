@@ -1,12 +1,18 @@
 import './App.css'
 import Albums from "./components/Albums.jsx";
 import Authentication from "./components/Authentication.jsx";
-
+import { Route, Routes } from "react-router-dom"
+import NavBar from './components/NavBar.jsx';
 function App() {
   return (
     <>
-      <Authentication />
-      <Albums />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Authentication />} />
+        <Route path="/about" element={<h1>About</h1>} />
+        <Route path={"/albums"} element={<Albums />} />
+      </Routes>
+
     </>
   )
 }
