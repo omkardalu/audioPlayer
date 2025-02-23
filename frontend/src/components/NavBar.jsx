@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from '../assets/styles/NavBar.module.css';
+import { SignUpButton } from "./Authentication";
 
 const NavBar = () => {
   const isLoggedIn = JSON.parse(localStorage.getItem("isLoggedIn"));
@@ -18,7 +19,9 @@ const NavBar = () => {
                 <li><Link to="/profile">Profile</Link></li>
               </>
             ) : (
-              <li><Link to="/authenticate">Sign Up</Link></li>
+              <div className={classes.signUp}>
+                <SignUpButton />
+              </div>
             )
           }
         </ul>
