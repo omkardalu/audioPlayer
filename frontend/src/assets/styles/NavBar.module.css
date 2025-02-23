@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 50%;
+  list-style: none;
+  gap: 4rem;
+}
