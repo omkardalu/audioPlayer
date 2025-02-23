@@ -6,11 +6,11 @@ const axios = require("axios");
 const querystring = require("querystring");
 const app = express();
 const port = process.env.PORT || 8000;
-const {CLIENT_ID, CLIENT_SECRET, BACKEND_URL, FRONTEND_URL} = require("./envi.js");
+const { CLIENT_ID, CLIENT_SECRET, BACKEND_URL, FRONTEND_URL } = require("./envi.js");
 const cookieParser = require("cookie-parser");
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: FRONTEND_URL,
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -62,7 +62,7 @@ app.get("/callback", async (req, res) => {
     res.cookie("accessToken", access_token, cookieOptions);
     res.cookie("refreshToken", refresh_token, cookieOptions);
 
-    res.redirect('http://localhost:5173');
+    res.redirect(FRONTEND_URL);
   } catch (error) {
     console.error("Error exchanging code:", error.response.data);
     res.status(500).send("Authentication failed");
@@ -71,7 +71,7 @@ app.get("/callback", async (req, res) => {
 
 // Refresh Access Token
 app.get("/refresh", async (req, res) => {
-  const { refresh_token } = req.query; 
+  const { refresh_token } = req.query;
 
   try {
     const response = await axios.post("https://accounts.spotify.com/api/token",
@@ -106,7 +106,7 @@ app.get("/spotify/*", async (req, res) => {
       headers: { Authorization: `Bearer ${accessToken}` },
     });
 
-    console.log("Spotify Response:", spotifyResponse.data);
+    // console.log("Spotify Response:", spotifyResponse.data);
     res.json(spotifyResponse.data);
   } catch (error) {
     console.error("Error fetching Spotify API:", error.response?.data || error);
