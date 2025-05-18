@@ -4,7 +4,8 @@ const useSpotifyApi = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  
   const fetchSpotifyData = async (endpoint) => {
     setLoading(true);
     setError(null);
