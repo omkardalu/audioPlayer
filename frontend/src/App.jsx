@@ -1,10 +1,10 @@
 import './App.css'
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.jsx';
 import Authentication from './components/Authentication.jsx';
-import { useEffect } from 'react';
 import isAuthenticated from '../utils/isAuthenticated.js';
-import { useState } from 'react';
+import Player from './Player.jsx';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -16,11 +16,11 @@ function App() {
     }
     checkLogin();
   }, [])
-  
+
   return (
     <>
       <Routes >
-        <Route path="/" element={isLoggedIn ? <Home /> : <Authentication />} />
+        <Route path="/" element={isLoggedIn ? <Player /> : <Authentication />} />
       </Routes>
     </>
   )

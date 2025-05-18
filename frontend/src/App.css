@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+.super-container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 200px auto 200px;
+  grid-template-rows: 40px auto 70px;
+}
+
+.player-header {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  color: white;
+  background-color: #282c34;
+}
+
+.player-left-aside {
+  background-color: #20232a;
+  color: white;
+}
+
+.player-right-aside {
+  background-color: #20232a;
+  color: white;
+}
+
+.player-main {
+  background-color: #282c34;
+  color: white;
+}
+
+.track-player {
+  grid-column: 1/-1;
+  background-color: #282c34;
+  color: white;
+}
