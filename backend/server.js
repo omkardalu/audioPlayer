@@ -69,6 +69,16 @@ app.get("/callback", async (req, res) => {
   }
 });
 
+app.get("/auth/check", (req, res) => {
+  const accessToken = req.cookies.accessToken;
+  const refreshToken = req.cookies.refreshToken;
+  if (accessToken && refreshToken) {
+    res.json({ isAuthenticated: true });
+  } else {
+    res.status(401).json({ isAuthenticated: false });
+  }
+});
+
 // Refresh Access Token
 app.get("/refresh", async (req, res) => {
   const { refresh_token } = req.query;
