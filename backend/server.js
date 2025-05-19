@@ -81,21 +81,37 @@ app.get("/auth/check", (req, res) => {
 
 // Refresh Access Token
 app.get("/refresh", async (req, res) => {
-  const { refresh_token } = req.query;
+  const { refreshToken } = req.query;
 
   try {
-    const response = await axios.post("https://accounts.spotify.com/api/token",
-      querystring.stringify({
-        grant_type: "refresh_token",
-        refresh_token: refresh_token,
+    // const response = await axios.post("https://accounts.spotify.com/api/token",
+    //   querystring.stringify({
+    //     grant_type: "refresh_token",
+    //     refresh_token: refreshToken,
+    //   }),
+    //   {
+    //     headers: {
+    //       Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64")}`,
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     },
+    //   }
+    // );
+
+   const url = "https://accounts.spotify.com/api/token";
+
+    const payload = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+        client_id: CLIENT_ID
       }),
-      {
-        headers: {
-          Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64")}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      }
-    );
+    }
+    const body = await fetch(url, payload);
+    const response = await body.json();
 
     res.json(response.data);
   } catch (error) {
@@ -112,9 +128,13 @@ app.get("/spotify/*", async (req, res) => {
   const spotifyEndpoint = req.params[0];
 
   try {
-    const spotifyResponse = await axios.get(`https://api.spotify.com/v1/${spotifyEndpoint}`, {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    });
+    const spotifyResponse = await axios.get(
+      `https://api.spotify.com/v1/${spotifyEndpoint}`,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+        params: req.query, // Pass query parameters to Spotify API
+      }
+    );
 
     // console.log("Spotify Response:", spotifyResponse.data);
     res.json(spotifyResponse.data);

@@ -1,0 +1,28 @@
+.profileHeader {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  height: 270px;
+  gap: 24px;
+  background-image: linear-gradient(to bottom,rgb(42, 197, 73),rgba(42, 197, 73, 0.7), rgba(42, 197, 73, 0.6));
+  box-shadow: 0px 0px 1000px -1px rgba(42, 197, 73, 0.764);
+}
+
+.profileHeader img{
+  border-radius: 50%;
+  width: auto;
+  height: 100%;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  margin-bottom: 15px;
+}
+
+.profileName{
+  font-size: 5.5rem;
+  font-weight: 900;
+  padding: 0;
+}

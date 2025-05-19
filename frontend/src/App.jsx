@@ -1,7 +1,6 @@
 import './App.css'
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home.jsx';
 import Authentication from './components/Authentication.jsx';
 import isAuthenticated from '../utils/isAuthenticated.js';
 import Player from './Player.jsx';
@@ -20,7 +19,7 @@ function App() {
   return (
     <>
       <Routes >
-        <Route path="/" element={isLoggedIn ? <Player /> : <Authentication />} />
+        <Route path="*" element={isLoggedIn ? <Player /> : <Authentication />} />
       </Routes>
     </>
   )

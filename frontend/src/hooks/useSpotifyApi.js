@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const useSpotifyApi = () => {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
   
@@ -19,7 +19,9 @@ const useSpotifyApi = () => {
         credentials: "include",
       });
 
-      if (!response.ok) throw new Error("Failed to fetch Spotify data");
+      if (!response.ok) {
+        throw new Error("Failed to fetch Spotify data");
+      }
 
       const result = await response.json();
       setData(result);
