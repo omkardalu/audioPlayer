@@ -12,4 +12,4 @@ const ArtistCard = ({ image, name, type, href }) => {
   )
 }
 
-export default ArtistCard
+export default ArtistCard;

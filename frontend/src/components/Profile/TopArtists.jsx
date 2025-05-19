@@ -16,10 +16,12 @@ const TopArtists = () => {
     )
   })
   return (
-    <section id="top-artists" >
+    <section id={styles.topArtistsSection} >
+      <div className={styles.topArtistsHeader}>
       <h2>Top artists this month</h2>
-      <h4>Only visible to you</h4>
-      <p>show all</p>
+      <p>Only visible to you</p>
+      <p onClick={()=>{}}>Show all</p>
+      </div>
       <div className={styles.topArtistsContainer} >
       {artists}
       </div>

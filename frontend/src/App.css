@@ -1,3 +1,33 @@
+@font-face {
+  font-family: 'spotifyBold';
+  src: url('/fonts/Gotham-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'spotifyNormal';
+  src: url('/fonts/Gotham-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94949494;
+  border: 0px solid #121212; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #949494c0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +35,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'spotifyNormal', sans-serif;
   background-color: black;
   color: white;
 }
