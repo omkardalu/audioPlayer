@@ -21,7 +21,12 @@ app.use(cookieParser());
 const REDIRECT_URI = `${BACKEND_URL}/callback`;
 // Redirect to Spotify for Login
 app.get("/login", (req, res) => {
-  const scope = "user-read-private user-read-email";
+  const scope = [
+  "user-read-email",
+  "user-read-private",
+  "user-top-read",            
+  "playlist-read-private",
+].join(" ");
   const authUrl = `https://accounts.spotify.com/authorize?${querystring.stringify({
     response_type: "code",
     client_id: CLIENT_ID,

@@ -3,10 +3,12 @@ import Profile from '../pages/Profile.jsx';
 
 const PlayerMain = () => {
   return (
-    <div className='playerMain'>
-      <Routes>
-        <Route path='/profile' element={<Profile />} />
-      </Routes>
+    <div className='player-main-container'>
+      <div className='player-main'>
+        <Routes>
+          <Route path='/profile' element={<Profile />} />
+        </Routes>
+      </div>
     </div>
   )
 };
