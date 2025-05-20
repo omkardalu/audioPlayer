@@ -22,11 +22,14 @@ const REDIRECT_URI = `${BACKEND_URL}/callback`;
 // Redirect to Spotify for Login
 app.get("/login", (req, res) => {
   const scope = [
-  "user-read-email",
-  "user-read-private",
-  "user-top-read",            
-  "playlist-read-private",
-].join(" ");
+    "user-read-email",
+    "user-read-private",
+    "user-top-read",
+    "playlist-read-private",
+    "streaming",
+    "user-modify-playback-state",
+    "user-read-playback-state"
+  ].join(" ");
   const authUrl = `https://accounts.spotify.com/authorize?${querystring.stringify({
     response_type: "code",
     client_id: CLIENT_ID,
@@ -102,7 +105,7 @@ app.get("/refresh", async (req, res) => {
     //   }
     // );
 
-   const url = "https://accounts.spotify.com/api/token";
+    const url = "https://accounts.spotify.com/api/token";
 
     const payload = {
       method: 'POST',

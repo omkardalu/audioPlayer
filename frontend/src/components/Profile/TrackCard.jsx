@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { formatTime, truncate } from '../../../utils/functionalities.js';
 import styles from '../../assets/styles/Profile.module.css';
-import currentSongContext from '../../context/PlayerContext.js';
+import PlayerContext from '../../context/PlayerContext.js';
 const TrackCard = ({ id, count, image, name, album, time }) => {
-  const { setCurrentSong } = useContext(currentSongContext);
+  const {setCurrentSong} = useContext(PlayerContext);
   const timeInMin = formatTime(time / 1000);
 
   const handleDoubleClick = () => {
