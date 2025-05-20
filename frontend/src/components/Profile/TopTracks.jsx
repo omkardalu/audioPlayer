@@ -10,16 +10,27 @@ const TopTracks = () => {
   useEffect(() => {
     fetchSpotifyData('me/top/tracks');
   }, []);
-console.log(data);
-
+  console.log(data);
+  
   if (loading) return <p>Loading...</p>
   if (error) return <h1>{error}</h1>
+
   const isCurrentPath = window.location.pathname === '/top/tracks';
+
   !isCurrentPath ? data.items.splice(4) : data.items;
-  const tracks = data.items.map((item,index) => {
-    const timeInMin = (item.duration_ms/60000).toFixed(2).replace('.',':');
+  
+  const tracks = data.items.map((item, index) => {
     return (
-      <TrackCard count={index + 1} image={item.album.images[2].url} name={item.name} album={item.album.name} time={timeInMin} key={item.id} href={item.href} />
+      <TrackCard
+        key={item.id}
+        id={item.id}
+        count={index + 1}
+        name={item.name}
+        album={item.album.name}
+        time={item.duration_ms}
+        image={item.album.images[2].url}
+      />
+
     )
   });
 
@@ -38,4 +49,4 @@ console.log(data);
   )
 }
 
-export default TopTracks
+export default TopTracks;

@@ -4,6 +4,7 @@ import TopArtists from './Profile/TopArtists.jsx';
 import TopTracks from './Profile/TopTracks.jsx';
 
 const PlayerMain = () => {
+  
   return (
     <div className='player-main-container'>
       <div className='player-main'>
